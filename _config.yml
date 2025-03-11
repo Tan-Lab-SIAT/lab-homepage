@@ -1,5 +1,0 @@
-url: "https://tan-lab-siat.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "Tan Lab@SIAT" # the name of your site, e.g. ACME Corp.
-description: "Genetics, Plasticity and Vision"
-theme: jekyll-theme-cayman
