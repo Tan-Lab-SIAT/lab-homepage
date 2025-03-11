@@ -3,19 +3,14 @@ layout: default
 ---
 
 <div class="row g-5 mb-5">
-  <div class="col-md-3">
-    <!-- 替换photo.jpg为你的照片路径，Your Name替换为你的姓名 -->
-    <img src="{{ site.github.url }}/assets/img/photo.jpg" alt="Liming Tan" class="img-fluid rounded-circle">
-  </div>
-  <div class="col-md-9">
-    <h1>Your Name</h1>
-  </div>
-</div>
-
-
-<div class="row g-5 mb-5">
-  <div>
+  <div class="col-md-12">
     <h3 class="fw-bold border-bottom pb-3 mb-5">CV</h3>
+    <!-- 新增姓名和照片区域，照片位于姓名之上 -->
+    <div class="text-center mb-5">
+      <img src="{{ site.github.url }}/assets/img/photo.jpg" alt="Your Name" class="img-fluid rounded-circle" style="max-width:200px;">
+      <h1>Your Name</h1>
+    </div>
+    <!-- CV的其他内容 -->
     <div class="row g-5 mb-5">
       <div class="col-md-2">
         <h4>Education</h4>
