@@ -23,7 +23,7 @@ layout: default
       <div class="row g-5 mb-5 justify-content-center">
         <!-- 左侧：照片 -->
         <div class="col-md-5 text-center">
-          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px; margin: auto;">
+          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:150px; margin: auto;">
         </div>
         <!-- 右侧：详细信息 -->
         <div class="col-md-5 text-center">
@@ -36,24 +36,28 @@ layout: default
       </div>
     {% endfor %}
   
-  {% elsif gridTypes contains group.name %}
-    <!-- 网格布局：每行显示 3 个 -->
-    <div class="container">
-      <div class="row">
-        {% for person in group.items %}
-          <div class="col-md-4 mb-5 text-center">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
-            <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
-            <p style="color: grey; font-size: small;">{{ person.title }}</p>
-            <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-            <p style="color: black; font-size: small;">{{ person.email }}</p>
-            <p style="color: black; font-size: small;">{{ person.description }}</p>
-          </div>
-          {% if forloop.index | modulo: 3 == 0 and forloop.last == false %}
-            </div><div class="row">
-          {% endif %}
-        {% endfor %}
+{% elsif gridTypes contains group.name %}
+  <!-- 网格布局：每行显示 3 个 -->
+  <div class="container">
+    {% for person in group.items %}
+      {% if forloop.index0 modulo 3 == 0 %}
+        <div class="row">
+      {% endif %}
+      
+      <div class="col-md-4 mb-5 text-center">
+        <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
+        <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
+        <p style="color: grey; font-size: small;">{{ person.title }}</p>
+        <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+        <p style="color: black; font-size: small;">{{ person.email }}</p>
+        <p style="color: black; font-size: small;">{{ person.description }}</p>
       </div>
+      
+      {% if forloop.index0 modulo 3 == 2 or forloop.last %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
     </div>
   
   {% else %}
