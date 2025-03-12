@@ -7,11 +7,11 @@ layout: default
 <!-- People Section -->
 <h3 class="fw-bold border-bottom pb-3 mb-5">People</h3>
 
-{%- comment -%}
-  首先显示 Principle Investigator（注意：确保数据中的类型名称与此处一致）
-{%- endcomment -%}
+{% assign gridTypes = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% assign people_by_type = site.data.settings.people | group_by: "type" %}
-{% assign piGroup = people_by_type | where:"name", "Principle Investigator" | first %}
+
+{% comment %} 先显示 Principle Investigator（注意数据中的类型名称应为 "Principle Investigator"） {% endcomment %}
+{% assign piGroup = people_by_type | where: "name", "Principle Investigator" | first %}
 {% if piGroup %}
   <div class="row mb-4">
     <div class="col-12">
@@ -36,19 +36,18 @@ layout: default
   {% endfor %}
 {% endif %}
 
-{%- comment -%}
-  定义需要采用网格布局显示的类型，并指定显示顺序
-{%- endcomment -%}
+{% comment %} 按指定顺序显示网格布局的类型 {% endcomment %}
 {% assign gridOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% for type in gridOrder %}
-  {% assign group = people_by_type | where:"name", type | first %}
+  {% assign group = people_by_type | where: "name", type | first %}
   {% if group %}
-    <!-- 分组标题：显示分组名称，样式为黑色、大字号、加粗 -->
+    <!-- 分组标题 -->
     <div class="row mb-4">
       <div class="col-12">
         <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
       </div>
     </div>
+    <!-- 网格布局：每行显示 3 个 -->
     <div class="container">
       {% for person in group.items %}
         {% if forloop.index0 | modulo: 3 == 0 %}
@@ -72,6 +71,9 @@ layout: default
   {% endif %}
 {% endfor %}
 
+{% comment %} 其他类型若有（采用默认左右布局）可在此处添加 {% endcomment %}
+
+
 <!-- Group Photo Section -->
 <div class="row g-5 mb-5">
   <div class="col-12 text-center">
@@ -85,9 +87,8 @@ layout: default
 {% assign alumni_by_type = site.data.settings.alumni | group_by: "type" %}
 {% assign alumniOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% for type in alumniOrder %}
-  {% assign group = alumni_by_type | where:"name", type | first %}
+  {% assign group = alumni_by_type | where: "name", type | first %}
   {% if group %}
-    <!-- Alumni 分组标题：显示分组名称，样式为绿色、大字号、不加粗 -->
     <div class="row mb-4">
       <div class="col-12">
         <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
