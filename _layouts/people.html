@@ -19,7 +19,7 @@ layout: default
   
   {% if group.name == "Principle Investigator" %}
     <!-- Primary Investigator：左右布局 -->
-    {% for person in group.items %}
+    {% for person in site.data.settings.people %}
       <div class="row g-5 mb-5">
         <!-- 左侧：照片 -->
         <div class="col-md-6">
@@ -40,7 +40,7 @@ layout: default
     <!-- 网格布局，每行 3 个 -->
     <div class="container">
       <div class="row">
-        {% for person in group.items %}
+        {% for person in site.data.settings.people %}
           <div class="col-md-4 mb-5 text-center">
             <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
             <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
@@ -58,7 +58,7 @@ layout: default
   
   {% else %}
     <!-- 默认左右布局 -->
-    {% for person in group.items %}
+    {% for person in site.data.settings.people %}
       <div class="row g-5 mb-5">
         <div class="col-md-6">
           <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px;">
@@ -94,7 +94,7 @@ layout: default
         <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
       </div>
     </div>
-    {% for person in group.items %}
+    {% for person in site.data.settings.alumni %}
       <div class="mb-4">
         <!-- 第一行：姓名 - title - 年份 -->
         <p style="color: green; font-size: 1.5em; font-weight: normal;">{{ person.name }} , {{ person.title }} , {{ person.year }}</p>
