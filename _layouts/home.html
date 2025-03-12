@@ -10,10 +10,10 @@ layout: default
 </div>
 
 <!-- 添加一个间距分隔符 -->
-<div style="height:50px;"></div>
+<div style="height:100px;"></div>
 
 <!-- Research Section -->
-<div class="row g-5 mb-5 d-flex align-items-center justify-content-center" style="min-height:500px;">
+<div class="row g-5 mb-5 module-section d-flex align-items-center justify-content-center" style="min-height:500px;">
   <!-- 左侧：视频区域 -->
   <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
     <video autoplay muted loop playsinline style="height:500px; width:auto; object-fit:cover;">
@@ -42,8 +42,11 @@ layout: default
   </div>
 </div>
 <!-- 添加一个间距分隔符 -->
-<div style="height:50px;"></div>
+<div style="height:100px;"></div>
 <!-- CV Section -->
+<div class="cv-section" style="position: relative; height:500px; background: url('{{ site.github.url }}/assets/img/neurons.webp') no-repeat center center; background-size: cover;">
+  <!-- 使用一个半透明遮罩层或者内层容器，以确保文字内容清晰 -->
+  <div style="position: relative; z-index: 2; padding:20px;">
 <div class="row g-5 mb-5 d-flex align-items-center justify-content-center" style="min-height:500px;">
   <!-- 左侧：CV文本区域，右侧：CV图片区域 -->
   <div class="col-12 col-md-6 d-flex align-items-center justify-content-center" style="padding:20px;">
@@ -66,7 +69,7 @@ layout: default
   </div>
 </div>
 <!-- 添加一个间距分隔符 -->
-<div style="height:50px;"></div>
+<div style="height:100px;"></div>
 
 {% include publications.html %}
 
