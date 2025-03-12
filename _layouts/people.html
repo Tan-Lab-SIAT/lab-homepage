@@ -17,44 +17,43 @@ layout: default
     </div>
   </div>
   
-  {% if group.name == "Principle Investigator" %}
-    <!-- Primary Investigator：左右布局 -->
-    {% for person in group.items %}
-      <div class="row g-5 mb-5">
-        <!-- 左侧：照片 -->
-        <div class="col-md-6">
-          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px;">
-        </div>
-        <!-- 右侧：详细信息 -->
-        <div class="col-md-6">
-          <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
+{% if group.name == "Primary Investigator" %}
+  {% for person in group.items %}
+    <div class="row g-5 mb-5 justify-content-center">
+      <!-- 左侧：照片，设置为5列并居中 -->
+      <div class="col-md-5 text-center">
+        <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px; margin: auto;">
+      </div>
+      <!-- 右侧：详细信息，设置为5列，并让文字居中 -->
+      <div class="col-md-5 text-center">
+        <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
+        <p style="color: grey; font-size: small;">{{ person.title }}</p>
+        <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+        <p style="color: black; font-size: small;">{{ person.email }}</p>
+        <p style="color: black; font-size: small;">{{ person.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  
+{% elsif gridTypes contains group.name %}
+  <!-- 网格布局，每行显示 3 个 -->
+  <div class="container">
+    <div class="row">
+      {% for person in group.items %}
+        <div class="col-md-4 mb-5 text-center">
+          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
+          <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
           <p style="color: grey; font-size: small;">{{ person.title }}</p>
           <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
           <p style="color: black; font-size: small;">{{ person.email }}</p>
           <p style="color: black; font-size: small;">{{ person.description }}</p>
         </div>
-      </div>
-    {% endfor %}
-  
-  {% elsif gridTypes contains group.name %}
-    <!-- 网格布局，每行 3 个 -->
-    <div class="container">
-      <div class="row">
-        {% for person in group.items %}
-          <div class="col-md-4 mb-5 text-center">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
-            <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
-            <p style="color: grey; font-size: small;">{{ person.title }}</p>
-            <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-            <p style="color: black; font-size: small;">{{ person.email }}</p>
-            <p style="color: black; font-size: small;">{{ person.description }}</p>
-          </div>
-          {% if forloop.index0 != 0 and forloop.index0 | plus: 1 | modulo: 3 == 0 %}
-            </div><div class="row">
-          {% endif %}
-        {% endfor %}
-      </div>
+        {% if forloop.index modulo 3 == 0 and forloop.last == false %}
+          </div><div class="row">
+        {% endif %}
+      {% endfor %}
     </div>
+  </div>
   
   {% else %}
     <!-- 默认左右布局 -->
