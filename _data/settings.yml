@@ -29,4 +29,4 @@ social:
 
 
 contacts:
-- {name: 'Dr. Academia', title: 'Professor', department: 'Physics & Astronomy', institution: 'Some University', institution_address: '1 Main Street, Canada', phone: '(000) 000-0000', email: 'hello@university.edu', office: 'Science Building 505', image: 'assets/img/contact.jpg'}
+- {name: 'Dr.Liming Tan', title: 'Principle Investigator', department: 'Brain Institute', institution: 'Shenzhen Institute of Advanced Technology', email: 'lm.tan@siat.ac.cn', image: 'assets/img/map.png'}
