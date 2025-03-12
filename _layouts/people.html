@@ -7,40 +7,51 @@ layout: default
 <!-- People Section -->
 <h3 class="fw-bold border-bottom pb-3 mb-5">People</h3>
 
-{% assign gridTypes = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
+{%- comment -%}
+  首先显示 Principle Investigator（注意：确保数据中的类型名称与此处一致）
+{%- endcomment -%}
 {% assign people_by_type = site.data.settings.people | group_by: "type" %}
-{% for group in people_by_type %}
-  <!-- 分组标题：每个分组的 type 标题以大字号、加粗、黑色显示 -->
+{% assign piGroup = people_by_type | where:"name", "Principle Investigator" | first %}
+{% if piGroup %}
   <div class="row mb-4">
     <div class="col-12">
-      <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
+      <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ piGroup.name }}</h3>
     </div>
   </div>
-  
-  {% if group.name == "Principle Investigator" %}
-    <!-- Principle Investigator：左右布局，居中显示 -->
-    {% for person in group.items %}
-      <div class="row g-5 mb-5 justify-content-center">
-        <!-- 左侧：照片 -->
-        <div class="col-md-5 text-center">
-          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:150px; margin: auto;">
-        </div>
-        <!-- 右侧：详细信息 -->
-        <div class="col-md-5 text-center">
-          <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
-          <p style="color: grey; font-size: small;">{{ person.title }}</p>
-          <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-          <p style="color: black; font-size: small;">{{ person.email }}</p>
-          <p style="color: black; font-size: small;">{{ person.description }}</p>
-        </div>
+  {% for person in piGroup.items %}
+    <div class="row g-5 mb-5 justify-content-center">
+      <!-- 左侧：照片 -->
+      <div class="col-md-5 text-center">
+        <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:150px; margin: auto;">
       </div>
-    {% endfor %}
-  
-  {% elsif gridTypes contains group.name %}
-    <!-- 网格布局：每行显示 3 个 -->
+      <!-- 右侧：详细信息 -->
+      <div class="col-md-5 text-center">
+        <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
+        <p style="color: grey; font-size: small;">{{ person.title }}</p>
+        <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+        <p style="color: black; font-size: small;">{{ person.email }}</p>
+        <p style="color: black; font-size: small;">{{ person.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{%- comment -%}
+  定义需要采用网格布局显示的类型，并指定显示顺序
+{%- endcomment -%}
+{% assign gridOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
+{% for type in gridOrder %}
+  {% assign group = people_by_type | where:"name", type | first %}
+  {% if group %}
+    <!-- 分组标题：显示分组名称，样式为黑色、大字号、加粗 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
+      </div>
+    </div>
     <div class="container">
       {% for person in group.items %}
-        {% if forloop.index | modulo: 3 == 1 %}
+        {% if forloop.index0 | modulo: 3 == 0 %}
           <div class="row">
         {% endif %}
         
@@ -53,28 +64,11 @@ layout: default
           <p style="color: black; font-size: small;">{{ person.description }}</p>
         </div>
         
-        {% if forloop.index | modulo: 3 == 0 or forloop.last %}
+        {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
           </div>
         {% endif %}
       {% endfor %}
     </div>
-  
-  {% else %}
-    <!-- 默认左右布局 -->
-    {% for person in group.items %}
-      <div class="row g-5 mb-5">
-        <div class="col-md-6">
-          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px;">
-        </div>
-        <div class="col-md-6">
-          <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
-          <p style="color: grey; font-size: small;">{{ person.title }}</p>
-          <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-          <p style="color: black; font-size: small;">{{ person.email }}</p>
-          <p style="color: black; font-size: small;">{{ person.description }}</p>
-        </div>
-      </div>
-    {% endfor %}
   {% endif %}
 {% endfor %}
 
@@ -82,16 +76,18 @@ layout: default
 <div class="row g-5 mb-5">
   <div class="col-12 text-center">
     <h3 class="fw-bold border-bottom pb-3 mb-5">Group Photo</h3>
-    <img src="{{ site.github.url }}/assets/img/group_photo.jpg" alt="Group Photo" class="img-fluid" style="max-width:100%;">
+    <img src="{{ site.github.url }}/assets/img/limingtan_full.png" alt="Group Photo" class="img-fluid" style="max-width:100%;">
   </div>
 </div>
 
 <!-- Alumni Section -->
 <h3 class="fw-bold border-bottom pb-3 mb-5">Alumni</h3>
 {% assign alumni_by_type = site.data.settings.alumni | group_by: "type" %}
-{% for group in alumni_by_type %}
-  {% if group.name != "Principle Investigator" %}
-    <!-- 显示 Alumni 分组标题：绿色、大字号、不加粗 -->
+{% assign alumniOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
+{% for type in alumniOrder %}
+  {% assign group = alumni_by_type | where:"name", type | first %}
+  {% if group %}
+    <!-- Alumni 分组标题：显示分组名称，样式为绿色、大字号、不加粗 -->
     <div class="row mb-4">
       <div class="col-12">
         <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
