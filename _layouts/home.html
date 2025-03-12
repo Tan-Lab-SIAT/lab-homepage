@@ -51,9 +51,9 @@ layout: default
   <div style="position: relative; z-index: 2;">
     <div class="row g-5 mb-5 d-flex align-items-center justify-content-center" style="min-height:500px;">
       <!-- 左侧：CV 文本区域 -->
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center" style="padding:20px;">
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center" style="padding:20px; padding-right:20px;">
         <div style="width:100%; text-align: right; color: white;">
-          <h3 class="fw-bold style="text-align: right;">CV</h3>
+          <h3 class="fw-bold text-center" style="margin-right:20px;">CV</h3>
           <h4>Education</h4>
           {% for edu in site.data.cv.education %}
             <p class="fw-bold" >{{ edu.title }}</p>
@@ -67,7 +67,7 @@ layout: default
         </div>
       </div>
       <!-- 右侧：CV 图片区域 -->
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-start" style="padding:20px; padding-left:20px;">
         <img src="{{ site.github.url }}/assets/img/neurotree_limingtan.png" alt="CV Image" class="img-fluid" style="height:500px; width:auto; object-fit:cover;">
       </div>
     </div>
