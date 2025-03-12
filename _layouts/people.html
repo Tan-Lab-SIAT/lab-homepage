@@ -10,8 +10,10 @@ layout: default
 {% assign gridTypes = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% assign people_by_type = site.data.settings.people | group_by: "type" %}
 
-{% comment %} 先显示 Principle Investigator（注意数据中的类型名称应为 "Principle Investigator"） {% endcomment %}
-{% assign piGroup = people_by_type | where: "name", "Principle Investigator" | first %}
+{%- comment -%}
+  先显示 Principle Investigator（注意数据中类型名称必须与这里一致）
+{%- endcomment -%}
+{% assign piGroup = people_by_type | where:"name", "Principle Investigator" | first %}
 {% if piGroup %}
   <div class="row mb-4">
     <div class="col-12">
@@ -36,10 +38,12 @@ layout: default
   {% endfor %}
 {% endif %}
 
-{% comment %} 按指定顺序显示网格布局的类型 {% endcomment %}
+{%- comment -%}
+  对于 "Postdoctoral Scholars", "Graduate Students", "Research Staff" 采用网格布局，每行显示 3 个
+{%- endcomment -%}
 {% assign gridOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% for type in gridOrder %}
-  {% assign group = people_by_type | where: "name", type | first %}
+  {% assign group = people_by_type | where:"name", type | first %}
   {% if group %}
     <!-- 分组标题 -->
     <div class="row mb-4">
@@ -47,31 +51,27 @@ layout: default
         <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
       </div>
     </div>
-    <!-- 网格布局：每行显示 3 个 -->
+    <!-- 网格布局：采用 Bootstrap 的 row-cols 类自动每行显示 3 个 -->
     <div class="container">
-      {% for person in group.items %}
-        {% if forloop.index0 | modulo: 3 == 0 %}
-          <div class="row">
-        {% endif %}
-        
-        <div class="col-md-4 mb-5 text-center">
-          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
-          <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
-          <p style="color: grey; font-size: small;">{{ person.title }}</p>
-          <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-          <p style="color: black; font-size: small;">{{ person.email }}</p>
-          <p style="color: black; font-size: small;">{{ person.description }}</p>
-        </div>
-        
-        {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
+      <div class="row row-cols-1 row-cols-md-3">
+        {% for person in group.items %}
+          <div class="col mb-5 text-center">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
+            <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
+            <p style="color: grey; font-size: small;">{{ person.title }}</p>
+            <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+            <p style="color: black; font-size: small;">{{ person.email }}</p>
+            <p style="color: black; font-size: small;">{{ person.description }}</p>
           </div>
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   {% endif %}
 {% endfor %}
 
-{% comment %} 其他类型若有（采用默认左右布局）可在此处添加 {% endcomment %}
+{%- comment -%}
+  其他类型（如果有）采用默认左右布局，可在此处添加
+{%- endcomment -%}
 
 
 <!-- Group Photo Section -->
@@ -87,8 +87,9 @@ layout: default
 {% assign alumni_by_type = site.data.settings.alumni | group_by: "type" %}
 {% assign alumniOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% for type in alumniOrder %}
-  {% assign group = alumni_by_type | where: "name", type | first %}
+  {% assign group = alumni_by_type | where:"name", type | first %}
   {% if group %}
+    <!-- Alumni 分组标题 -->
     <div class="row mb-4">
       <div class="col-12">
         <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
