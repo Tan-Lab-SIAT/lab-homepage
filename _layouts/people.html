@@ -17,7 +17,7 @@ layout: default
     </div>
   </div>
   
-  {% if group.name == "Primary Investigator" %}
+  {% if group.name == "Principle Investigator" %}
     <!-- Primary Investigator：左右布局 -->
     {% for person in group.items %}
       <div class="row g-5 mb-5">
@@ -87,18 +87,21 @@ layout: default
 <h3 class="fw-bold border-bottom pb-3 mb-5">Alumni</h3>
 {% assign alumni_by_type = site.data.settings.alumni | group_by: "type" %}
 {% for group in alumni_by_type %}
-  <!-- Alumni 分组标题：绿色、大字号、不加粗 -->
-  <div class="row mb-4">
-    <div class="col-12">
-      <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
+  {% if group.name != "Principle Investigator" %}
+    <!-- 显示当前 Alumni 分组标题 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 style="color: green; font-size: 2em; font-weight: normal;">{{ group.name }}</h3>
+      </div>
     </div>
-  </div>
-  {% for person in group.items %}
-    <div class="mb-4">
-      <!-- 第一行：姓名 - title - 年份（绿色、大字号、不加粗） -->
-      <p style="color: green; font-size: 1.5em; font-weight: normal;">{{ person.name }} - {{ person.title }} - {{ person.year }}</p>
-      <!-- 第二行：职位 - 去向（黑色小字） -->
-      <p style="color: black; font-size: small;">{{ person.position }} - {{ person.destination }}</p>
-    </div>
-  {% endfor %}
+    {% for person in group.items %}
+      <div class="mb-4">
+        <!-- 第一行：姓名 - title - 年份 -->
+        <p style="color: green; font-size: 1.5em; font-weight: normal;">{{ person.name }} - {{ person.title }} - {{ person.year }}</p>
+        <!-- 第二行：职位 - 去向 -->
+        <p style="color: black; font-size: small;">{{ person.position }} - {{ person.destination }}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
 {% endfor %}
+
