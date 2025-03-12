@@ -9,9 +9,17 @@ layout: default
   </div>
 </div>
 
-<div class="row g-5 mb-5">
-  <div class="col-md-6">
-    <h3 class="fw-bold">Research</h3>
+<!-- Research Section -->
+<div class="row g-5 mb-5" style="height:600px;">
+  <!-- 左侧：AVI视频 -->
+  <div class="col-md-4 d-flex align-items-center justify-content-center">
+    <video src="{{ site.github.url }}/assets/img/retinotopic mapping.avi" controls style="height:600px; width:auto; object-fit:cover;"></video>
+  </div>
+  <!-- 中间：研究描述文本 (文本左对齐) -->
+  <div class="col-md-4 d-flex align-items-center" style="padding: 20px;">
+    <div style="width:100%;">
+      <h3 class="fw-bold">Research</h3>
+      <p style="font-size: 1em; text-align: left;">
     {{ 'We aim to understand cross-species mechanisms by which genetic programs and experience regulate the brain development and 
     dysfunction at different levels. To do this, we use state-of-art molecular, cellular, circuit, physiological, 
     anatomical and behavioral approaches in mouse and non-human primates. Our recent work demonstrated that visual experience is 
@@ -20,38 +28,46 @@ layout: default
     We are building up and expanding our research topics from these findings, to ask how experience regulates the development of 
     cell-type specific circuits at whole brain level. In addition, we are trying to rebuild eye-brain circuits in large 
     animal models of optic nerve disease. The ultimate goal of our research is to treat brain dysfunction in human.' }}
+      </p>
+    </div>
   </div>
-  <div class="col-md-6 text-center">
-    <img src="{{ site.github.url }}/assets/img/cell_graph.jpg" alt="Home" class="img-fluid" width="100%" style="display: inline-block; margin-left: 20px;margin-top: 50px;">
+  <div class="col-md-4 d-flex align-items-center justify-content-center">
+    <img src="{{ site.github.url }}/assets/img/cell_graph.jpg" alt="Home" class="img-fluid" style="height:600px; width:auto; object-fit:cover;">
   </div>
 </div>
-<div class="row g-5 mb-5">
-  <div class="col-md-6" style="position: relative; top: -50px;">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">CV</h3>
-    <h4>Education</h4>
-    {% for edu in site.data.cv.education %}
-      <p class="fw-bold">{{ edu.title }}</p>
-      <p>{{ edu.description }}</p>
-    {% endfor %}
-    <h4>Academic Experience</h4>
-    {% for exp in site.data.cv.academic-experience %}
-      <p class="fw-bold">{{ exp.title }}</p>
-      <p>{{ exp.description }}</p>
-    {% endfor %}
+<!-- CV Section -->
+<div class="row g-5 mb-5" style="height:600px;">
+  <!-- 左侧：CV文字 (文本左对齐) -->
+  <div class="col-md-6 d-flex align-items-center" style="padding: 20px;">
+    <div style="width:100%;">
+      <h3 class="fw-bold border-bottom pb-3 mb-5">CV</h3>
+      <h4>Education</h4>
+      {% for edu in site.data.cv.education %}
+        <p class="fw-bold">{{ edu.title }}</p>
+        <p>{{ edu.description }}</p>
+      {% endfor %}
+      <h4>Academic Experience</h4>
+      {% for exp in site.data.cv.academic-experience %}
+        <p class="fw-bold">{{ exp.title }}</p>
+        <p>{{ exp.description }}</p>
+      {% endfor %}
+    </div>
   </div>
-  <div class="col-md-6 text-center">
-    <img src="{{ site.github.url }}/assets/img/neurotree_limingtan.png" alt="Your Name" class="img-fluid" style="max-width:580px;margin-top: 50px;">
+  <!-- 右侧：CV图片 -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center">
+    <img src="{{ site.github.url }}/assets/img/neurotree_limingtan.png" alt="CV Image" class="img-fluid" style="height:600px; width:auto; object-fit:cover;">
   </div>
 </div>
 
 
 {% include publications.html %}
 
-<div class="row g-5 mb-5">
+<!-- Updates Section -->
+<div class="row g-5 mb-5 d-flex align-items-center justify-content-center" style="height:600px;">
   <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
+    <h3 class="fw-bold text-center">Updates</h3>
     {% for post in site.posts %}
-      <p><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+      <p style="text-align: center;"><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
     {% endfor %}
   </div>
 </div>
