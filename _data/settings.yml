@@ -6,20 +6,25 @@ menu:
 - {name: 'contact', url: '/contact'}
 
 people:
-- {name: 'Principle Investigator', title: 'Researcher', department: 'Physics & Astronomy', institution: 'Some University', institution_address: '1 Main Street, Canada', phone: '(000) 000-0000', email: 'hello@university.edu', office: 'Science Building 505', image: 'assets/img/primary-investigator.jpg', url: 'primary-investigator'}
-- {name: 'Lab Technician', title: 'Researcher', department: 'Physics & Astronomy', institution: 'Some University', institution_address: '1 Main Street, Canada', phone: '(000) 000-0000', email: 'hello@university.edu', office: 'Science Building 505', image: 'assets/img/lab-technician.jpg', url: 'lab-technician'}
-- {name: 'Graduate Student', title: 'Researcher', department: 'Physics & Astronomy', institution: 'Some University', institution_address: '1 Main Street, Canada', phone: '(000) 000-0000', email: 'hello@university.edu', office: 'Science Building 505', image: 'assets/img/graduate-student.jpg', url: 'graduate-student'}
+- {name: 'Liming Tan', title: 'Professor',type: 'Principle Investigator', department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences', email: 'lm.tan@siat.ac.cn', image: 'assets/img/limingtan_half.jpg',description: 'Genetics, Plasticity and Vision'}
+- {name: 'Lin Wang', title: 'Research Assistant',type: 'Research Staff',department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences', email: 'l.wang@siat.ac.cn', image: 'assets/img/wanglin.png',description: 'Single cell spatial genomics, Computational Biology'}
+- {name: 'Chunyun Jia', title: 'Research Assistant',type: 'Research Staff', department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'cy.jia1@siat.ac.cn', image: 'assets/img/jiachunyun.jpg', description: 'Neuronal tracing, Neuroplasticity Research'}
+- {name: 'Xiang Gao', title: 'Assistant Professor',type: 'Research Staff', department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'x.gao3@siat.ac.cn', image: 'assets/img/gaoxiang.jpg', description: 'Single cell genomics, Genome-wide association study'}
+- {name: 'Chuying Zhou', title: 'Postdoc',type: 'Postdoctoral Scholars', department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'cy.zhou2@siat.ac.cn', image: 'assets/img/zhouchuying.jpg', description: 'Neuroplasticity in the development of visual circuit'}
+- {name: 'Jing Zhu', title: 'Postdoc',type: 'Postdoctoral Scholars', department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'j.zhu2@siat.ac.cn', image: 'assets/img/zhujing.jpg', description: 'Spatial transcriptomics and Neurobehavioral Research'}
+- {name: 'Yao Ge', title: 'PhD student',type: 'Graduate Students', department: 'Brain Insitute', institution: 'Southeast University & Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'y.ge@siat.ac.cn', image: 'assets/img/geyao.jpg',description: 'Neuropixels, Animal behavior research' }
+- {name: 'Xinqi Li', title: 'MS student',type: 'Graduate Students', department: 'Brain Insitute', institution: 'University of Science and Technology of China & Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: '2010667442@qq.com', image: 'assets/img/lixinqi.jpg',description: 'Retinotopic mapping' }
+- {name: 'jingxi Zhao', title: 'MS student',type: 'Graduate Students', department: 'Brain Insitute', institution: 'Macau University of Science and Technology & Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences',  email: 'jingxizhao0926@gmail.com', image: 'assets/img/zhaojingxi.jpg',description: 'Glaucoma and Brain Research' }
+
 
 courses:
-- {name: 'Vector Calculus', url: 'vector-calculus'}
-- {name: 'Quantum Mechanics', url: 'quantum-mechanics'}
-- {name: 'Stellar Structures', url: 'stellar-structures'}
+- {name: 'Coming Up Soon', url: 'vector-calculus'}
+- {name: 'Coming Up Soon', url: 'quantum-mechanics'}
+- {name: 'Coming Up Soon', url: 'stellar-structures'}
 
 social:
-- {icon: 'github', link: 'https://github.com/LeNPaul'}
-- {icon: 'twitter', link: 'https://twitter.com/paululele'}
-- {icon: 'instagram', link: 'https://instagram.com/paululele'}
-- {icon: 'linkedin', link: 'https://linkedin.com/in/lenpaul'}
+- {icon: 'github', link: 'https://github.com/orgs/Tan-Lab-SIAT/repositories'}
+
 
 contacts:
 - {name: 'Dr. Academia', title: 'Professor', department: 'Physics & Astronomy', institution: 'Some University', institution_address: '1 Main Street, Canada', phone: '(000) 000-0000', email: 'hello@university.edu', office: 'Science Building 505', image: 'assets/img/contact.jpg'}
