@@ -56,7 +56,7 @@ layout: default
       <div class="row row-cols-1 row-cols-md-3">
         {% for person in group.items %}
           <div class="col mb-5 text-center">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px;">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="height:300px; width:auto; object-fit:cover;">
             <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
             <p style="color: grey; font-size: small;">{{ person.title }}</p>
             <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
