@@ -7,9 +7,6 @@ layout: default
 <!-- People Section -->
 <h3 class="fw-bold border-bottom pb-3 mb-5">People</h3>
 
-{% comment %}
-  定义采用网格布局显示的类型
-{% endcomment %}
 {% assign gridTypes = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
 {% assign people_by_type = site.data.settings.people | group_by: "type" %}
 {% for group in people_by_type %}
@@ -20,8 +17,8 @@ layout: default
     </div>
   </div>
   
-  {% if group.name == "Primary Investigator" %}
-    <!-- Primary Investigator：左右布局，居中显示 -->
+  {% if group.name == "Principle Investigator" %}
+    <!-- Principle Investigator：左右布局，居中显示 -->
     {% for person in group.items %}
       <div class="row g-5 mb-5 justify-content-center">
         <!-- 左侧：照片 -->
@@ -40,7 +37,7 @@ layout: default
     {% endfor %}
   
   {% elsif gridTypes contains group.name %}
-    <!-- 网格布局：每行 3 个 -->
+    <!-- 网格布局：每行显示 3 个 -->
     <div class="container">
       <div class="row">
         {% for person in group.items %}
@@ -52,7 +49,7 @@ layout: default
             <p style="color: black; font-size: small;">{{ person.email }}</p>
             <p style="color: black; font-size: small;">{{ person.description }}</p>
           </div>
-          {% if forloop.index modulo 3 == 0 and forloop.last == false %}
+          {% if forloop.index | modulo: 3 == 0 and forloop.last == false %}
             </div><div class="row">
           {% endif %}
         {% endfor %}
@@ -82,7 +79,7 @@ layout: default
 <div class="row g-5 mb-5">
   <div class="col-12 text-center">
     <h3 class="fw-bold border-bottom pb-3 mb-5">Group Photo</h3>
-    <img src="{{ site.github.url }}/assets/img/group_photo.jpg" alt="Group Photo" class="img-fluid" style="max-width:100%;">
+    <img src="{{ site.github.url }}/assets/img/limingtan_full.png" alt="Group Photo" class="img-fluid" style="max-width:100%;">
   </div>
 </div>
 
@@ -90,7 +87,7 @@ layout: default
 <h3 class="fw-bold border-bottom pb-3 mb-5">Alumni</h3>
 {% assign alumni_by_type = site.data.settings.alumni | group_by: "type" %}
 {% for group in alumni_by_type %}
-  {% if group.name != "Primary Investigator" %}
+  {% if group.name != "Principle Investigator" %}
     <!-- 显示 Alumni 分组标题：绿色、大字号、不加粗 -->
     <div class="row mb-4">
       <div class="col-12">
@@ -100,13 +97,9 @@ layout: default
     {% for person in group.items %}
       <div class="mb-4">
         <!-- 第一行：姓名 - title - 年份 -->
-        <p style="color: green; font-size: 1.5em; font-weight: normal;">
-          {{ person.name }} , {{ person.title }} , {{ person.year }}
-        </p>
+        <p style="color: green; font-size: 1.5em; font-weight: normal;">{{ person.name }} , {{ person.title }} , {{ person.year }}</p>
         <!-- 第二行：职位 - 去向 -->
-        <p style="color: black; font-size: small;">
-          {{ person.position }} , {{ person.career }}
-        </p>
+        <p style="color: black; font-size: small;">{{ person.position }} , {{ person.career }}</p>
       </div>
     {% endfor %}
   {% endif %}
