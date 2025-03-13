@@ -2,53 +2,6 @@
 layout: default
 ---
 
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-
-    <div class="text-center mb-5">
-      <img src="{{ site.github.url }}/assets/img/limingtan_full.png" alt="Liming Tan" style="width: 600px; height: 300px; object-fit: cover;">
-      <h1>Liming Tan</h1>
-    </div>
-
-    <div class="row g-5 mb-5">
-      <div class="col-md-2">
-        <h4>Education</h4>
-      </div>
-      <div class="col-md-10">
-        {% for section in site.data.cv.education %}
-          <p class="fw-bold">{{ section.title }}</p>
-          <p>{{ section.description }}</p>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="row g-5 mb-5">
-      <div class="col-md-2">
-        <h4>Academic Experience</h4>
-      </div>
-      <div class="col-md-10">
-        {% for section in site.data.cv.academic-experience %}
-          <p class="fw-bold">{{ section.title }}</p>
-          <p>{{ section.description }}</p>
-        {% endfor %}
-      </div>
-    </div>
-
-    <!-- 添加三个图标链接区域 -->
-    <div class="row g-5 mb-5">
-      <div class="col-md-12 text-center">
-        <p style="margin-top:10px;">
-          <a href="https://scholar.google.com/citations?user=mGhI_w4AAAAJ&hl=en" target="_blank" title="Google Scholar">
-            <img src="/assets/img/scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
-          </a>
-          <a href="https://orcid.org/0000-0002-7034-0321" target="_blank" title="ORCID">
-            <img src="/assets/img/orcid_icon.svg" alt="ORCID" style="height:20px; margin: 0 5px;">
-          </a>
-          <a href="https://neurotree.org/beta/tree.php?pid=746386" target="_blank" title="Neurotree">
-            <img src="/assets/img/tree_icon.jpg" alt="Neurotree" style="height:20px; margin: 0 5px;">
-          </a>
-        </p>
-      </div>
-    </div>
-
-  </div>
+<div class="pdf-container" style="width: 100%; height: 100vh; margin: 0; padding: 0;">
+  <iframe src="{{ site.github.url }}/assets/pdf/limingtan_cv.pdf" style="width:100%; height:100%; border: none;" title="CV PDF"></iframe>
 </div>
