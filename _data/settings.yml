@@ -30,3 +30,8 @@ social:
 
 contacts:
 - {name: 'Dr.Liming Tan', title: 'Principle Investigator', department: 'Brain Institute', institution: 'Shenzhen Institute of Advanced Technology', email: 'lm.tan@siat.ac.cn', image: 'assets/img/naochuang.webp'}
+
+icon:
+  googleScholar: "/assets/img/scholar_icon.png"
+  orcid: "/assets/img/orcid_icon.svg"
+  neurotree: "/assets/img/tree_icon.jpg"
