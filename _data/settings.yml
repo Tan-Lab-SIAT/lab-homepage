@@ -19,7 +19,7 @@ people:
 alumni:
 - {name: '*', title: '*',type: 'Principle Investigator',year: '*',position: '*',career: '*',department: 'Brain Insitute', institution: 'Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences', email: 'lm.tan@siat.ac.cn', image: 'assets/img/limingtan_half.jpg',description: 'Genetics, Plasticity and Vision'}
 
-courses:
+projects:
 - {name: 'Coming Up Soon', url: 'vector-calculus'}
 - {name: 'Coming Up Soon', url: 'quantum-mechanics'}
 - {name: 'Coming Up Soon', url: 'stellar-structures'}
