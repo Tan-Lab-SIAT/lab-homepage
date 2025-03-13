@@ -7,12 +7,10 @@ layout: default
 <!-- People Section -->
 <h3 class="fw-bold border-bottom pb-3 mb-5">People</h3>
 
-{% assign gridTypes = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
-{% assign people_by_type = site.data.settings.people | group_by: "type" %}
-
 {%- comment -%}
-  先显示 Principle Investigator（注意数据中类型名称必须与这里一致）
+  先显示 Principle Investigator 部分（竖直布局）
 {%- endcomment -%}
+{% assign people_by_type = site.data.settings.people | group_by: "type" %}
 {% assign piGroup = people_by_type | where:"name", "Principle Investigator" | first %}
 {% if piGroup %}
   <div class="row mb-4">
@@ -21,39 +19,44 @@ layout: default
     </div>
   </div>
   {% for person in piGroup.items %}
-    <div class="row g-0 mb-5 justify-content-center align-items-center">
-      <!-- 左侧：照片区域，右对齐 -->
-      <div class="col-md-6 text-end" style="padding-right: 20px;">
-        <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="height:300px; width:auto; margin: auto;">
-      </div>
-      <!-- 右侧：详细信息 -->
-      <div class="col-md-6 text-start" style="padding-left: 20px;">
-        <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
-        <p style="color: grey; font-size: small;">{{ person.title }}</p>
-        <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
-        <p style="color: black; font-size: small;">{{ person.email }}</p>
-        <p style="color: black; font-size: small;">{{ person.description }}</p>
-        <!-- 添加图标链接 -->
-        <p style="color: black; font-size: small;">
-          <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
-            <img src="{{ site.data.settings.icon.googleScholar }}" alt="Google Scholar" style="height:20px; margin-right:5px;">
-          </a>
-          <a href="{{ person.orcid }}" target="_blank" title="ORCID">
-            <img src="{{ site.data.settings.icon.orcid }}" alt="ORCID" style="height:20px; margin-right:5px;">
-          </a>
-          <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
-            <img src="{{ site.data.settings.icon.neurotree }}" alt="Neurotree" style="height:20px;">
-          </a>
-        </p>
+    <div class="row g-0 mb-5">
+      <div class="col-12">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+          <!-- 照片 -->
+          <div class="me-md-3 mb-3 mb-md-0" style="flex: 0 0 auto;">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px;">
+          </div>
+          <!-- 详细信息 -->
+          <div style="flex: 1 1 auto; text-align: left;">
+            <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
+            <p style="color: grey; font-size: small;">{{ person.title }}</p>
+            <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+            <p style="color: black; font-size: small;">{{ person.email }}</p>
+            <p style="color: black; font-size: small;">{{ person.description }}</p>
+            <!-- 图标链接 -->
+            <p style="text-align: center; margin-top: 10px;">
+              <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
+                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.orcid }}" target="_blank" title="ORCID">
+                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
+                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   {% endfor %}
 {% endif %}
 
 {%- comment -%}
-  对于 "Postdoctoral Scholars", "Graduate Students", "Research Staff" 采用网格布局，每行显示 3 个
+  定义网格布局显示的类型，并指定显示顺序
 {%- endcomment -%}
-{% assign gridOrder = "Postdoctoral Scholars,Graduate Students,Research Staff" | split: "," %}
+{% assign gridOrder = "Postdoctoral Scholars,Research Staff,Graduate Students" | split: "," %}
+
 {% for type in gridOrder %}
   {% assign group = people_by_type | where:"name", type | first %}
   {% if group %}
@@ -63,32 +66,72 @@ layout: default
         <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
       </div>
     </div>
-    <!-- 网格布局：采用 Bootstrap 的 row-cols 类自动每行显示 3 个 -->
+    <!-- 网格布局：使用 Bootstrap 5 row-cols 类，每行显示 3 个 -->
     <div class="container">
       <div class="row row-cols-1 row-cols-md-3">
         {% for person in group.items %}
           <div class="col mb-5 text-center">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="height:300px; width:auto; object-fit:cover;">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px; height: auto; object-fit:cover;">
             <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
             <p style="color: grey; font-size: small;">{{ person.title }}</p>
             <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
             <p style="color: black; font-size: small;">{{ person.email }}</p>
             <p style="color: black; font-size: small;">{{ person.description }}</p>
-          <!-- 添加图标链接 -->
-          <p style="color: black; font-size: small;">
-            <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
-              <img src="{{ site.data.settings.icon.googleScholar }}" alt="Google Scholar" style="height:20px; margin-right:5px;">
-            </a>
-            <a href="{{ person.orcid }}" target="_blank" title="ORCID">
-              <img src="{{ site.data.settings.icon.orcid }}" alt="ORCID" style="height:20px; margin-right:5px;">
-            </a>
-            <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
-              <img src="{{ site.data.settings.icon.neurotree }}" alt="Neurotree" style="height:20px;">
-            </a>
-          </p>
-        </div>
+            <!-- 图标链接 -->
+            <p style="text-align: center; margin-top: 10px;">
+              <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
+                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.orcid }}" target="_blank" title="ORCID">
+                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
+                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+              </a>
+            </p>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+{%- comment -%}
+  如果还有其他非 PI 类型且不在 gridOrder 中，也采用网格布局（每行显示 3 个）
+{%- endcomment -%}
+{% for group in people_by_type %}
+  {% unless gridOrder contains group.name or group.name == "Principle Investigator" %}
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 style="color: black; font-size: 2em; font-weight: bold;">{{ group.name }}</h3>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3">
+        {% for person in group.items %}
+          <div class="col mb-5 text-center">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px; height: auto; object-fit:cover;">
+            <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
+            <p style="color: grey; font-size: small;">{{ person.title }}</p>
+            <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
+            <p style="color: black; font-size: small;">{{ person.email }}</p>
+            <p style="color: black; font-size: small;">{{ person.description }}</p>
+            <!-- 图标链接 -->
+            <p style="text-align: center; margin-top: 10px;">
+              <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
+                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.orcid }}" target="_blank" title="ORCID">
+                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+              </a>
+              <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
+                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+              </a>
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   {% endif %}
 {% endfor %}
 
