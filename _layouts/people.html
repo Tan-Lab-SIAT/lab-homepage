@@ -23,11 +23,11 @@ layout: default
       <div class="col-12">
         <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
           <!-- 照片 -->
-          <div class="me-md-3 mb-3 mb-md-0" style="flex: 0 0 auto;">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:300px;">
+          <div class="col-md-6 text-end" style="padding-right:20px;">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="height:300px; width:auto; object-fit:cover;">
           </div>
           <!-- 详细信息 -->
-          <div style="flex: 1 1 auto; text-align: left;">
+          <div class="col-md-6 text-start" style="padding-left:20px;">
             <h1 style="color: green; font-weight: bold; font-size: 2em;">{{ person.name }}</h1>
             <p style="color: grey; font-size: small;">{{ person.title }}</p>
             <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
@@ -36,13 +36,13 @@ layout: default
             <!-- 图标链接 -->
             <p style="text-align: center; margin-top: 10px;">
               <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
-                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.orcid }}" target="_blank" title="ORCID">
-                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/orcid_icon.svg" alt="ORCID" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
-                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/tree_icon.jpg" alt="Neurotree" style="height:20px; margin: 0 5px;">
               </a>
             </p>
           </div>
@@ -71,7 +71,7 @@ layout: default
       <div class="row row-cols-1 row-cols-md-3">
         {% for person in group.items %}
           <div class="col mb-5 text-center">
-            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="max-width:200px; height: auto; object-fit:cover;">
+            <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" class="img-fluid" style="height:200px; width:auto; object-fit:cover;">
             <h4 style="color: green; font-weight: bold; font-size: 1.5em;">{{ person.name }}</h4>
             <p style="color: grey; font-size: small;">{{ person.title }}</p>
             <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
@@ -80,13 +80,13 @@ layout: default
             <!-- 图标链接 -->
             <p style="text-align: center; margin-top: 10px;">
               <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
-                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.orcid }}" target="_blank" title="ORCID">
-                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/orcid_icon.svg" alt="ORCID" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
-                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/tree_icon.jpg" alt="Neurotree" style="height:20px; margin: 0 5px;">
               </a>
             </p>
           </div>
@@ -119,13 +119,13 @@ layout: default
             <!-- 图标链接 -->
             <p style="text-align: center; margin-top: 10px;">
               <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
-                <img src="/assets/img/google_scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/scholar_icon.png" alt="Google Scholar" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.orcid }}" target="_blank" title="ORCID">
-                <img src="/assets/img/orcid_icon.png" alt="ORCID" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/orcid_icon.svg" alt="ORCID" style="height:20px; margin: 0 5px;">
               </a>
               <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
-                <img src="/assets/img/neurotree_icon.png" alt="Neurotree" style="height:20px; margin: 0 5px;">
+                <img src="/assets/img/tree_icon.jpg" alt="Neurotree" style="height:20px; margin: 0 5px;">
               </a>
             </p>
           </div>
