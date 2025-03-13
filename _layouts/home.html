@@ -82,9 +82,11 @@ layout: default
 <!-- Updates Section -->
 <div class="row g-5 mb-5 justify-content-center" style="min-height:500px;">
   <div class="col-12 text-center">
-    <h3 class="fw-bold text-center">Updates</h3>
+    <h3 class="fw-bold text-center">Codes & Scripts</h3>
     {% for post in site.posts %}
-      <p style="text-align: center;"><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+      <p style="text-align: center;">
+        <a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a>
+      </p>
     {% endfor %}
   </div>
 </div>
