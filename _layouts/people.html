@@ -33,6 +33,18 @@ layout: default
         <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
         <p style="color: black; font-size: small;">{{ person.email }}</p>
         <p style="color: black; font-size: small;">{{ person.description }}</p>
+        <!-- 添加图标链接 -->
+        <p style="color: black; font-size: small;">
+          <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
+            <img src="{{ site.data.settings.icon.googleScholar }}" alt="Google Scholar" style="height:20px; margin-right:5px;">
+          </a>
+          <a href="{{ person.orcid }}" target="_blank" title="ORCID">
+            <img src="{{ site.data.settings.icon.orcid }}" alt="ORCID" style="height:20px; margin-right:5px;">
+          </a>
+          <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
+            <img src="{{ site.data.settings.icon.neurotree }}" alt="Neurotree" style="height:20px;">
+          </a>
+        </p>
       </div>
     </div>
   {% endfor %}
@@ -62,23 +74,47 @@ layout: default
             <p style="color: black; font-size: small;">{{ person.department }}, {{ person.institution }}</p>
             <p style="color: black; font-size: small;">{{ person.email }}</p>
             <p style="color: black; font-size: small;">{{ person.description }}</p>
-          </div>
-        {% endfor %}
+          <!-- 添加图标链接 -->
+          <p style="color: black; font-size: small;">
+            <a href="{{ person.googleScholar }}" target="_blank" title="Google Scholar">
+              <img src="{{ site.data.settings.icon.googleScholar }}" alt="Google Scholar" style="height:20px; margin-right:5px;">
+            </a>
+            <a href="{{ person.orcid }}" target="_blank" title="ORCID">
+              <img src="{{ site.data.settings.icon.orcid }}" alt="ORCID" style="height:20px; margin-right:5px;">
+            </a>
+            <a href="{{ person.neurotree }}" target="_blank" title="Neurotree">
+              <img src="{{ site.data.settings.icon.neurotree }}" alt="Neurotree" style="height:20px;">
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-  {% endif %}
+    {% endfor %}
+  {% endunless %}
 {% endfor %}
 
-{%- comment -%}
-  其他类型（如果有）采用默认左右布局，可在此处添加
-{%- endcomment -%}
 
-
-<!-- Group Photo Section -->
 <div class="row g-5 mb-5">
   <div class="col-12 text-center">
     <h3 class="fw-bold border-bottom pb-3 mb-5">Group Photo</h3>
-    <img src="{{ site.github.url }}/assets/img/limingtan_full.png" alt="Group Photo" class="img-fluid" style="max-width:100%;">
+<!-- Year-Based Group Photo Section -->
+<div class="container">
+  <!-- 2024 组照 -->
+  <div class="row g-5 mb-5">
+    <div class="col-12 text-center">
+      <h4 class="fw-bold border-bottom pb-3 mb-5">2024</h4>
+    </div>
+    <div class="col-12 text-center">
+      <img src="{{ site.github.url }}/assets/img/groupphoto24.jpg" alt="Group Photo 2024" class="img-fluid" style="max-width:100%;">
+    </div>
+  </div>
+  <!-- 2023 组照 -->
+  <div class="row g-5 mb-5">
+    <div class="col-12 text-center">
+      <h4 class="fw-bold border-bottom pb-3 mb-5">2023</h4>
+    </div>
+    <div class="col-12 text-center">
+      <img src="{{ site.github.url }}/assets/img/groupphoto23.jpg" alt="Group Photo 2023" class="img-fluid" style="max-width:100%;">
+    </div>
   </div>
 </div>
 
