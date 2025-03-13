@@ -1,9 +1,9 @@
 menu:
-- {name: 'projects', url: '/projects'}
-- {name: 'people', url: '/people'}
-- {name: 'publications', url: '/publications'}
-- {name: 'cv', url: '/cv'}
-- {name: 'contact', url: '/contact'}
+- {name: 'PROJECTS', url: '/projects'}
+- {name: 'PEOPLE', url: '/people'}
+- {name: 'PUBLICATIONS', url: '/publications'}
+- {name: 'CV', url: '/cv'}
+- {name: 'CONTACT', url: '/contact'}
 
 people:
 - {name: 'Liming Tan', title: 'Professor',type: 'Principle Investigator', department: 'Brain Insitute', institution: 'Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences', email: 'lm.tan@siat.ac.cn', image: 'assets/img/limingtan_half.png',description: 'Genetics, Plasticity and Vision',googleScholar: "https://scholar.google.com/citations?user=mGhI_w4AAAAJ&hl=en",orcid: "https://orcid.org/0000-0002-7034-0321",neurotree: "https://neurotree.org/beta/tree.php?pid=746386" }
